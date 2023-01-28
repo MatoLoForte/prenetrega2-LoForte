@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Segunda pre entrega</title>
+ <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+
+<H1>Transponer notas del Saxo Alto</H1>
+<h2>Toca todas las notas que deseas transponer</h2>
+
+    <div class="keyboard-container">
+      <div class="naturals-container">
+        <button id="DO4" value="DO4"><p>C</p></button>
+        <button id="RE4" value="RE4"><p>D</p></button>
+        <button id="MI4" value="MI4"><p>E</p></button>
+        <button id="FA4" value="FA4"><p>F</p></button>
+        <button id="SOL4" value="SOL4"><p>G</p></button>
+        <button id="LA4" value="LA4"><p>A</p></button>
+        <button id="SI4" value="SI4"><p>B</p></button>
+      </div>
+      <div class="accidentals-container">
+        <button class="C" id="REb4" value="REb4">C</button>
+        <button class="D" id="MIb4" value="MIb4">D</button>
+        <button class="F" id="SOLb4" value="SOLb4">F</button>
+        <button class="G" id="LAb4" value="LAb4">G</button>
+        <button class="A" id="SIb4" value="SIb4">A</button>
+      </div>
+    </div>
+    <br>
+    <br>
+<div class="buttons">
+ 
+
+<button id="trasponer" onclick="trasponer()">Trasponer</button>
+
+<button id="reset" onclick="reset()">Borrar</button>
+
+<label for="" id="NotaTranspuestaResultado"></label>
+</div>
+
+   
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
