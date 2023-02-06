@@ -11,6 +11,7 @@ const LA4 = new Audio("src/sounds/LA4.mp3");
 const SIb4 = new Audio("src/sounds/SIb4.mp3");
 const SI4 = new Audio("src/sounds/SI4.mp3");
 
+
 const reproducirNota = audio => {
   const clone = audio.cloneNode();
   clone.play();
@@ -18,7 +19,21 @@ const reproducirNota = audio => {
 };
 
 let notasUsuario = [];
-const saxoAlto = 9;
+let vientos = [
+  { viento: "Flauta en Sol", intervalo: 5 },
+  { viento: "Corno Inglés", intervalo: 7 },
+  { viento: "Clarinete en si bemol", intervalo: 2 },
+  { viento: "Clarinete en la", intervalo: 3 },
+  { viento: "Clarinete bajo", intervalo: 2 },
+  { viento: "Saxo Soprano", intervalo: 2 },
+  { viento: "Saxo Alto", intervalo: 9 },
+  { viento: "Saxo Tenor", intervalo: 2 },
+  { viento: "Saxo Baritono", intervalo: 9 },
+  { viento: "Trompeta en si bemol", intervalo: 2 },
+  { viento: "Trompeta en fa", intervalo: 7 }
+]
+
+// const saxoAlto = 9; esto lo tengo que reemplazar con los datos del array vientos accediendo al instrumento y value del select
 let label = document.getElementById("NotaTranspuestaResultado");
 
 function tocarTecla(idTecla, nota) {
