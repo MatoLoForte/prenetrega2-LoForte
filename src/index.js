@@ -19,19 +19,8 @@ const reproducirNota = audio => {
 };
 
 let notasUsuario = [];
-let vientos = [
-  { viento: "Flauta en Sol", intervalo: 5 },
-  { viento: "Corno Inglés", intervalo: 7 },
-  { viento: "Clarinete en si bemol", intervalo: 2 },
-  { viento: "Clarinete en la", intervalo: 3 },
-  { viento: "Clarinete bajo", intervalo: 2 },
-  { viento: "Saxo Soprano", intervalo: 2 },
-  { viento: "Saxo Alto", intervalo: 9 },
-  { viento: "Saxo Tenor", intervalo: 2 },
-  { viento: "Saxo Baritono", intervalo: 9 },
-  { viento: "Trompeta en si bemol", intervalo: 2 },
-  { viento: "Trompeta en fa", intervalo: 7 }
-]
+let instrumentos = document.getElementById("instrumentos");
+
 
 // const saxoAlto = 9; esto lo tengo que reemplazar con los datos del array vientos accediendo al instrumento y value del select
 let label = document.getElementById("NotaTranspuestaResultado");
@@ -42,14 +31,18 @@ function tocarTecla(idTecla, nota) {
   tecla.classList.add("active");
   setTimeout(() => tecla.classList.remove("active"), 100);
   notasUsuario.push(tecla.value);
+  localStorage.setItem("notasUsuario", JSON.stringify(notasUsuario));
   console.log(notasUsuario);
 };
 
 function trasponer(){
   let notasSize = teclas.length;
   let notasTranspuestas = [];
-  console.log("notasSize "+ notasSize);
-  console.log(saxoAlto);
+  let selectedInterval = instrumentos.options[instrumentos.selectedIndex].value;
+  let selectedInstrument = instrumentos.options[instrumentos.selectedIndex].text;
+
+  console.log(selectedInstrument);
+  console.log(selectedInterval);
   
   notasUsuario.forEach(element => { 
       let indexNotaTranspuesta = teclas.findIndex(object => {
@@ -57,10 +50,10 @@ function trasponer(){
       });
       console.log("indexNotaTranspuesta" + indexNotaTranspuesta);
       let indexNotaResult = 0;
-      if (indexNotaTranspuesta >= 9){
-       indexNotaResult = (notasSize - saxoAlto + indexNotaTranspuesta) - notasSize; 
+      if (indexNotaTranspuesta >= selectedInterval){
+       indexNotaResult = (notasSize - selectedInterval + indexNotaTranspuesta) - notasSize; 
       }else{
-        indexNotaResult = notasSize - saxoAlto + indexNotaTranspuesta;
+        indexNotaResult = notasSize - selectedInterval + indexNotaTranspuesta;
       }
       console.log("indexNotaResult " + indexNotaResult);
       notasTranspuestas.push(teclas[indexNotaResult]);
@@ -71,7 +64,8 @@ function trasponer(){
   });
   console.log("resultado " + resultado);
  
-  label.innerHTML = "Las notas transpuestas para saxo alto son " + resultado;
+  label.innerHTML = "Las notas transpuestas para " + selectedInstrument +   " son " + resultado;
+
 };
 
 function reset(){
@@ -100,3 +94,6 @@ teclas.forEach(({ id, nota }) => {
   tecla.addEventListener("click", () => tocarTecla(id, nota));
 });
 
+function continuar(){
+  notasUsuario = JSON.parse(localStorage.getItem("notasUsuario"));
+}
