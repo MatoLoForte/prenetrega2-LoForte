@@ -1,13 +1,36 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-image: ;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+.bg-image {
+  background-image: url(/src/img/pngwing.com.png) ;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100vh;
+}
+
 h1{
   text-align: center;
+  padding: 3vh;
 }
 
 h2{
   text-align: center;
+  padding: 3vh;
 }
 
-select{
+.select{
+  padding: 3vh;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
